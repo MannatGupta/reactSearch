@@ -1,23 +1,18 @@
+import {useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { Users } from './Users';
 
 function App() {
+  const [query, setQuery] = useState(null);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <input type='text'
+      className='searchBar'
+      onChange={(e) => setQuery(e.target.value)}/>
+      {Users.filter(user => user.first_name.toLowerCase().includes(query)).map(user => {
+       return <div key={user.id}>{user.first_name}</div>
+      })}
     </div>
   );
 }
