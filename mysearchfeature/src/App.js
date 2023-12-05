@@ -18,10 +18,6 @@ function App() {
       className='searchBar'
       placeholder='Serach here'
       onChange={(e) => setQuery(e.target.value)}/>
-
-      {/* {Users.filter(user => user.first_name.toLowerCase().includes(query)).map(user => {
-       return <div key={user.id}>{user.first_name}</div>
-      })} */}
       <Table data={search(Users)}/>
     </div>
   );
